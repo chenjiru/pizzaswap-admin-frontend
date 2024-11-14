@@ -9,7 +9,7 @@ const SidebarContainer = styled.div`
   background-color: rgb(26, 30, 31);
   overflow-y: auto;
   overflow-x: hidden;
-  height: 89vh;
+  height: 100vh;
   padding: 10px 15px;
   box-shadow: rgba(0, 0, 0, 0) 0px 0px, rgba(0, 0, 0, 0) 0px 0px, rgba(94, 92, 154, 0.1) 5px 0px 25px 0px;
 

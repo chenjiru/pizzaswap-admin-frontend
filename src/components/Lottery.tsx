@@ -67,7 +67,7 @@ const LotteryContainer = styled.div`
   }
   .postLotterySection {
     width: 71.2vw;
-    max-width: 100vw;
+    max-width: 73vw;
     .content {
       margin: 17px 0;
       display: flex;
@@ -79,6 +79,19 @@ const LotteryContainer = styled.div`
       input {
         width: 20vw;
       }
+    }
+
+    @media (min-width: 1500px) and (max-width: 1700px) {
+      max-width: 73vw;
+      width: 100%; // Full width on smaller screens
+    }
+    @media (min-width: 1701px) and (max-width: 1900px) {
+      max-width: 74vw;
+      width: 100%; // Full width on smaller screens
+    }
+    @media (min-width: 1400px) and (max-width: 1499px) {
+      max-width: 72.2vw;
+      width: 100%; // Full width on smaller screens
     }
   }
 `;
@@ -104,8 +117,9 @@ const InfoRow = styled.div`
 `;
 
 const Section = styled.div`
-  width: 33vw;
-  max-width: 100vw;
+  // width: 33vw;
+  flex: 1 1 30%; // Flex-grow to expand, flex-basis for initial width
+  max-width: 45%;
   padding: 8px 20px;
   background-color: rgb(26, 30, 31);
   border-radius: 6px;
