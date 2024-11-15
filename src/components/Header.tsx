@@ -2,6 +2,8 @@
 import React from "react";
 import styled from "styled-components";
 import logo from "../assets/Logo.png";
+import { FaBars } from "react-icons/fa"; // Import the bar icon
+
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -44,13 +46,38 @@ const LoginButton = styled.button`
   }
 `;
 
-const Header: React.FC = () => {
+const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+const MenuIcon = styled(FaBars)`
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+
+  /* Show only on mobile screens */
+  @media (min-width: 769px) {
+    display: none;
+  }
+`;
+
+interface HeaderProps {
+  toggleSidebar: () => void;
+}
+
+
+const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
   return (
     <HeaderContainer>
       <Logo>
         <img src={logo} alt="Logo" />
       </Logo>
+      <IconContainer>
+      <MenuIcon onClick={toggleSidebar} /> {/* Menu icon only visible on mobile */}
       <LoginButton>Login</LoginButton>
+      </IconContainer>
     </HeaderContainer>
   );
 };

@@ -1,5 +1,5 @@
 // App.tsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import Sidebar from "./components/Sidebar";
 import Lottery from "./components/Lottery";
@@ -22,13 +22,14 @@ const ContentWrapper = styled.div`
 `;
 
 const SidebarWrapper = styled.div`
-  max-width: 30vw;
+  overflow: hidden;
+  transition: max-width 0.3s ease;
 `;
 
 const MainContent = styled.div`
   flex: 1;
   padding: 20px;
-  background-color: (45, 52, 54);
+  background-color: rgb(45, 52, 54);
   overflow-y: auto;
   overflow-x: hidden;
   padding-bottom: 5rem;
@@ -41,13 +42,42 @@ const MainContent = styled.div`
 `;
 
 const App: React.FC = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prev) => !prev);
+  };
+
+  // Effect hook to handle screen size changes
+  useEffect(() => {
+    const handleResize = () => {
+      // Automatically open sidebar for large screens (desktop and above)
+      if (window.innerWidth >= 768) {
+        setIsSidebarOpen(true);
+      } else {
+        // Close sidebar for mobile and smaller screens
+        setIsSidebarOpen(false);
+      }
+    };
+
+    // Call the handleResize function on initial load and whenever the window is resized
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener on unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []); // Empty dependency array to run only once after mount
+
   return (
     <ThemeProvider theme={theme}>
       <AppContainer>
-        <Header />
+        <Header toggleSidebar={toggleSidebar} />
         <ContentWrapper>
           <SidebarWrapper>
-            <Sidebar />
+            <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar}/>
           </SidebarWrapper>
           <MainContent>
             <Lottery />

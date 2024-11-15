@@ -8,6 +8,14 @@ const LotteryContainer = styled.div`
     display: flex;
     justify-content: space-between;
   }
+
+  @media (max-width: 768px) {
+    .boxes {
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
   .newLotterySection {
     /* position: relative; */
     h1 {
@@ -25,6 +33,7 @@ const LotteryContainer = styled.div`
         flex-direction: column;
         gap: 0.5rem;
         width: 34vw;
+
         label {
           font-size: 12px;
           letter-spacing: 0.08em;
@@ -40,6 +49,12 @@ const LotteryContainer = styled.div`
         width: 34vw;
         /* left: 20px;
         bottom: 12%; */
+      }
+      @media (max-width: 768px) {
+        .inputs,
+        Button {
+          width: 68vw;
+        }
       }
     }
   }
@@ -62,6 +77,9 @@ const LotteryContainer = styled.div`
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
+        @media (max-width: 768px) {
+          margin-top: 0.6rem;
+        }
       }
     }
   }
@@ -80,6 +98,27 @@ const LotteryContainer = styled.div`
         width: 20vw;
       }
     }
+
+    @media (max-width: 768px) {
+      max-width: 100% !important;
+      width: 93%;
+      .content {
+        Button,
+        input {
+          width: 25vw;
+        }
+      }
+    }
+
+    @media (min-width: 320px) and (max-width: 400px) {
+      max-width: 100% !important;
+      width: 87%;
+    }
+      @media (min-width: 400px) and (max-width: 500px) {
+      max-width: 100% !important;
+      width: 90%;
+    }
+      
 
     @media (min-width: 1500px) and (max-width: 1700px) {
       max-width: 73vw;
@@ -117,7 +156,6 @@ const InfoRow = styled.div`
 `;
 
 const Section = styled.div`
-  // width: 33vw;
   flex: 1 1 30%; // Flex-grow to expand, flex-basis for initial width
   max-width: 45%;
   padding: 8px 20px;
@@ -125,6 +163,10 @@ const Section = styled.div`
   border-radius: 6px;
   margin-bottom: 0.6rem;
   border: 1px solid rgb(99, 110, 114);
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 `;
 
 const Title = styled.h1`
@@ -161,6 +203,9 @@ const Button = styled.button`
     box-shadow: none;
     outline: 0px;
   }
+  @media (max-width: 768px) {
+    width: 60vw;
+  }
 `;
 
 const Table = styled.table`
@@ -178,6 +223,9 @@ const Table = styled.table`
 const Th = styled.th`
   border: 1px solid #636e726b;
   padding: 8px;
+  @media (max-width:768px){
+    font-size:11px;
+  }
 `;
 
 const Td = styled.td`
@@ -186,6 +234,9 @@ const Td = styled.td`
   text-align: center;
   font-size: 13px;
   color: rgb(143, 148, 157);
+    @media (max-width:768px){
+    font-size:11px;
+  }
 `;
 
 const Lottery: React.FC = () => {
